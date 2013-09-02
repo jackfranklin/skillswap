@@ -8,7 +8,7 @@
 Dependencies: Ruby 1.9.3, Mongo installed.
 
 - `git clone`
-- Create `config.yml` and add your Twitter keys to it.
+- Create `config.yml` (use `config.yml.sample` as a guide) and add your Twitter keys to it.
 - `cd skillswap`
 - `bundle install`
 - `bundle exec shotgun -p 3000`
