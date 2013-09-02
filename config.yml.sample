@@ -1,0 +1,3 @@
+development:
+  key: TWITTER_KEY
+  secret: TWITTER_SECRET
