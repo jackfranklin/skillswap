@@ -36,6 +36,8 @@ post '/create' do
     session[:message] = "Swap added"
     redirect '/'
   else
-    erb :new, :locals => { :errors => swap.errors }
+    # erb :new, :locals => { :errors => swap.errors }
+    session[:message] = "You gotta fill out all the fields!"
+    redirect '/'
   end
 end

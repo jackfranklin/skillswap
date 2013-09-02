@@ -1,7 +1,187 @@
-.swap strong, .swap a {
-  font-size: 25px;
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
 }
+
+.clearfix:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  color: #666666;
+  font-size: 13pt;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+	color: inherit;
+}
+
+p {
+	line-height: 1.65;
+}
+
+header {
+	background: #2c3e50;
+	overflow: auto;
+}
+
+footer {
+	height: 48px;
+}
+
+.alert-box {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: #e74c3c;
+	width: 100%;
+	text-align: center;
+	line-height: 48px;
+	color: #fff;
+	font-weight: 700;
+}
+
+h1 {
+	font-size: 48px;
+	font-weight: 700;
+	text-decoration: none;
+	letter-spacing: -5px;
+	padding: 24px 0;
+	color: #3498db;
+	float: left;
+}
+
+h1 a {
+	text-decoration: none;
+}
+
+h2 {
+    text-align: center;
+	margin-bottom: 12px;
+    font-size: 24px;
+    color: #fff;
+    font-weight: 700;
+}
+
+/*.swap strong, .swap a {
+  font-size: 25px;
+}*/
 
 .hidden {
   display: none;
+}
+
+.wrap {
+	margin: auto;
+	width: 640px;
+}
+
+.info-bar {
+	background: #34495e;
+	padding: 24px 0;
+	margin-bottom: 24px;
+}
+
+.info-bar input[type="text"]{
+	float: right;
+}
+
+.info-bar .btn {
+	margin-top: 12px;
+}
+
+#logout {
+    float: right;
+    margin-top: 24px;
+}
+
+.btn {
+	display: inline-block;
+	text-decoration: none;
+	padding: 6px 12px;
+	border-radius: 3px;
+	cursor: pointer;
+	font-weight: 700;
+	margin-bottom: 12px;
+}
+
+.btn:hover {
+	opacity: 0.95;
+}
+
+.btn.btn-light {
+	background: #27ae60;
+	color: #fff;
+}
+
+.btn.btn-dark {
+	background: #2980b9;
+	color: #fff;
+}
+
+.blurb {
+	margin-bottom: 12px;
+	clear: both;
+}
+
+.text-light {
+	color: #ecf0f1;
+}
+
+input[type="text"]{
+    padding: 6px 12px;	
+    margin: 3px;
+    border-radius: 3px;
+    color: #2c3e50;
+}
+
+strong {
+	font-weight: 700;
+}
+
+.swap {
+	margin: 24px 0;
+	border-bottom: 1px solid #bdc3c7;
+	padding-bottom: 24px;
+}
+
+.swap .btn {
+	
+}
+
+.info-mini {
+	border-radius: 3px;
+	background: #ecf0f1;
+	padding: 12px;
+	overflow: auto;
+}
+
+.info-mini input[type="text"] {
+    float: right;
+	
+}
+
+.meta {
+	font-size: 12px;
+}
+
+.intro {
+	text-align: center;
 }

@@ -7,37 +7,43 @@
     </div>
   </div>
 <% end %>
-<div class="row">
-  <div class="large-12 columns">
-    <h1>Latest Swaps</h1>
-    <form id="filter-form">
-      <p>Filter the swaps</p>
-      <input type="text" name="swap-filter" placeholder="Ember.js" />
-      <input type="submit" class="hidden" />
-    </form>
-    <% swaps.each_with_index do |swap, index| %>
-      <div class="swap">
-        <p>
-          <a href="http://twitter.com/<%= swap.user %>"><%= swap.user %></a> is looking for help with <strong><%= swap.skill_needed %></strong>. In return, they can offer their help with <strong><%= swap.skill_offered %></strong>.
-          <a href="https://twitter.com/intent/tweet?text=@<%= swap.user %>, I can help you with <%= swap.skill_needed %> (via SkillSwap).">Offer your help.</a>
-        </p>
-        </div>
-      <% end %>
-    </tbody>
+<div class="info-bar">
+  <div class="wrap">
+    <% if user_signed_in? %>
+      <form action="/create" method="post">
+        <p class="blurb text-light">I am looking for someone to help me with: <input type="text" name="skill_needed" placeholder="Ember.js" /></p>
+        <p class="blurb text-light">In return I can offer help with: <input type="text" name="skill_offered" placeholder="Ruby on Rails" /></p>
+        <input class="btn btn-light" type="submit" value="Save" />
+      </form>
+    <% else %>
+      <div class="intro">
+        <h2>Find people to swap skills with&hellip;</h2>
+        <a class="btn btn-light" href="/auth/twitter">Sign in with Twitter</a>
+        <p class="meta text-light">The app is <em>read only</em>, we'll never tweet from your account or alter anything.</p>
+      </div>
+    <% end %>
   </div>
 </div>
-<div class="row">
-  <div class="columns large-12">
-      <h3>Get help</h3>
-      <% if user_signed_in? %>
-        <form action="/create" method="post">
-          <p>I am looking for someone to help me with: <input type="text" name="skill_needed" placeholder="Ember.js" /> and in return I can offer help with: <input type="text" name="skill_offered" placeholder="Ruby on Rails" /></p>
-          <input class="button "type="submit" value="Save" />
-        </form>
-        <p><a href="/signout">Sign Out</a></p>
-      <% else %>
-        <p>You need to <a href="/auth/twitter">Sign in with Twitter</a> if you'd like to post a new swap.</p>
-        <p>The app is <em>read only</em>, we'll never tweet from your account or alter anything.</p>
+<div>
+  <div class="wrap">
+    <!-- <h1>Latest Swaps</h1> -->
+    <div class="info-mini">
+      <form id="filter-form">
+        <input type="text" name="swap-filter" placeholder="Ember.js" />
+        <input type="submit" class="hidden" />
+        <p>Filter the swaps</p>
+      </form>
+    </div>
+    <% swaps.each_with_index do |swap, index| %>
+      <div class="swap">
+        <p class="blurb">
+          <a href="http://twitter.com/<%= swap.user %>" class="twitter"><%= swap.user %></a> is looking for help with <strong><%= swap.skill_needed %></strong>.</p>
+        <p class="blurb">In return, they can offer their help with <strong><%= swap.skill_offered %></strong>.
+          
+        </p>
+        <a class="btn btn-dark" href="https://twitter.com/intent/tweet?text=@<%= swap.user %>, I can help you with <%= swap.skill_needed %> (via SkillSwap).">Offer your help.</a>
+      </div>
       <% end %>
+    </tbody>
   </div>
 </div>

@@ -2,14 +2,25 @@
 <html>
 <head>
   <title>Skill Swap!</title>
-  <link rel="stylesheet" href="/css/normalize.css">
-  <link rel="stylesheet" href="/css/foundation.min.css">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="/css/style.css">
   <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
   <script type="text/javascript" src="/js/jquery.min.js"></script>
   <script type="text/javascript" src="/js/app.js"></script>
 </head>
 <body>
-  <%= yield %>
+	<header>
+		<div class="wrap">
+			<h1><a href="/">Skillswap</a></h1>
+			<% if user_signed_in? %>
+				<a href="/signout" id="logout" class="btn btn-light">Sign Out</a>
+			<% end %>
+		</div>
+	</header>
+	<div class="clearfix"></div>
+  	<%= yield %>
+  	<footer>
+  		
+  	</footer>
 </body>
 </html>
