@@ -4,8 +4,8 @@ development:
       database: skillswap
       hosts:
         - localhost:27017
-  production:
-    sessions:
-      default:
-        uri: <%= ENV['MONGOHQ_URL'] %>
+production:
+  sessions:
+    default:
+      uri: <%= ENV['MONGOHQ_URL'] %>
 
