@@ -8,6 +8,7 @@ def config_for_env
       "key" => ENV["TWITTER_KEY"],
       "secret" => ENV["TWITTER_SECRET"]
     }
+  end
 end
 
 def environment
