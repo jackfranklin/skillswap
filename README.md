@@ -1,3 +1,8 @@
+# Find people to help and help you.
+
+[SkillSwap](http://skillswapapp.herokuapp.com/)
+
+
 ## Running Locally
 
 Dependencies: Ruby 1.9.3, Mongo installed.
