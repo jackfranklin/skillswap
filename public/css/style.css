@@ -43,7 +43,8 @@ header {
 }
 
 footer {
-	height: 48px;
+	padding: 12px 0 6px 0;
+	background: #2c3e50;
 }
 
 .alert-box {
@@ -162,6 +163,10 @@ strong {
 	padding-bottom: 24px;
 }
 
+.swap:last-child {
+	border-bottom: none;
+}
+
 .swap .btn {
 	
 }
@@ -185,3 +190,12 @@ strong {
 .intro {
 	text-align: center;
 }
+
+.center {
+	text-align: center;
+}
+
+.meta-smaller {
+	font-size: 14px;
+}
+
