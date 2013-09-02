@@ -1,7 +1,13 @@
 require "yaml"
 
 def config_for_env
-  YAML.load_file("config.yml")[environment.to_s]
+  if environment == :development
+    YAML.load_file("config.yml")[environment.to_s]
+  else
+    {
+      "key" => ENV["TWITTER_KEY"],
+      "secret" => ENV["TWITTER_SECRET"]
+    }
 end
 
 def environment
