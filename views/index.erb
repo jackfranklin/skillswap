@@ -1,1 +1,38 @@
-Hello World
+<% if message && !message.empty? %>
+  <div class="row flash-message">
+    <div class="columns large-12">
+      <div class="alert-box success">
+        <%= message %>
+      </div>
+    </div>
+  </div>
+<% end %>
+<div class="row">
+  <div class="large-12 columns">
+    <h1>Latest Swaps</h1>
+    <% swaps.each do |swap| %>
+      <div class="swap">
+        <p>
+          <a href="http://twitter.com/<%= swap.user %>"><%= swap.user %></a> is looking for help with <strong><%= swap.skill_needed %></strong>. In return, they can offer their help with <strong><%= swap.skill_offered %></strong>.
+          <a href="https://twitter.com/intent/tweet?text=@<%= swap.user %>, I can help you with <%= swap.skill_needed %> (via SkillSwap).">Offer your help.</a>
+        </p>
+        </div>
+      <% end %>
+    </tbody>
+  </div>
+</div>
+<div class="row">
+  <div class="columns large-12">
+      <h3>Get help</h3>
+      <% if user_signed_in? %>
+        <form action="/create" method="post">
+          <p>I am looking for someone to help me with: <input type="text" name="skill_needed" placeholder="Ember.js" /> and in return I can offer help with: <input type="text" name="skill_offered" placeholder="Ruby on Rails" /></p>
+          <input class="button "type="submit" value="Save" />
+        </form>
+        <p><a href="/signout">Sign Out</a></p>
+      <% else %>
+        <p>You need to <a href="/auth/twitter">Sign in with Twitter</a> if you'd like to post a new swap.</p>
+        <p>The app is <em>read only</em>, we'll never tweet from your account or alter anything.</p>
+      <% end %>
+  </div>
+</div>
