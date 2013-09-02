@@ -10,7 +10,12 @@
 <div class="row">
   <div class="large-12 columns">
     <h1>Latest Swaps</h1>
-    <% swaps.each do |swap| %>
+    <form id="filter-form">
+      <p>Filter the swaps</p>
+      <input type="text" name="swap-filter" placeholder="Ember.js" />
+      <input type="submit" class="hidden" />
+    </form>
+    <% swaps.each_with_index do |swap, index| %>
       <div class="swap">
         <p>
           <a href="http://twitter.com/<%= swap.user %>"><%= swap.user %></a> is looking for help with <strong><%= swap.skill_needed %></strong>. In return, they can offer their help with <strong><%= swap.skill_offered %></strong>.

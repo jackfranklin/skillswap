@@ -11,7 +11,7 @@ enable :sessions
 get '/' do
   message = session[:message]
   session[:message] = nil
-  erb :index, :locals => { :message => message, :swaps => Swap.all.reverse.first(10) }
+  erb :index, :locals => { :message => message, :swaps => Swap.all.reverse }
 end
 
 get '/auth/twitter/callback' do
