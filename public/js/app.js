@@ -17,4 +17,9 @@ $(function() {
   $("#filter-form").on("submit", function(e) {
     e.preventDefault();
   });
+
+  $('.alert-box').on('click', function(){
+    $(this).hide();
+  });
+
 });
