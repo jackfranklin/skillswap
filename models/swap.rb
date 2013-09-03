@@ -9,4 +9,5 @@ class Swap
 
   validates_presence_of :skill_needed
   validates_presence_of :skill_offered
+  validates_presence_of :user
 end
