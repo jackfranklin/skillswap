@@ -41,7 +41,9 @@
         <p class="blurb">In return, they can offer their help with <strong><%= swap.skill_offered %></strong>.
           
         </p>
-        <a class="btn btn-dark" href="https://twitter.com/intent/tweet?text=@<%= swap.user %>, I can help you with <%= swap.skill_needed %> (via SkillSwap).">Offer your help.</a>
+        <% unless swap.user == session[:user] %>
+          <a class="btn btn-dark" href="https://twitter.com/intent/tweet?text=@<%= swap.user %>, I can help you with <%= swap.skill_needed %> (via SkillSwap).">Offer your help.</a>
+        <% end %>
       </div>
       <% end %>
     </tbody>
