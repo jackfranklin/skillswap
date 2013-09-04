@@ -53,7 +53,7 @@ App.SwapsController = Ember.ArrayController.extend({
   filtered: function() {
     var text = this.get('filterText').toLowerCase();
     if(text.length < 2) {
-      return this.get('content')
+      return this.get('content');
     } else {
       return this.get('content').filter(function(item) {
         var o = item.get('skill_offered').toLowerCase();
