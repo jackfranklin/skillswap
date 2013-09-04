@@ -17,10 +17,16 @@ App.ApplicationAdapter = DS.RESTAdapter.extend({
 });
 
 App.ApplicationController = Ember.Controller.extend({
+  needs: ["swaps"],
   currentUser: $("#application").data("user"),
   userLoggedIn: function() {
     return !!this.get('currentUser');
   }.property('currentUser'),
+  filterTextDidChange: Ember.observer(function() {
+    var text = this.get('filterText');
+    var swaps = this.get('controllers.swaps');
+    swaps.set('filterText', text);
+  }, 'filterText'),
   actions: {
     newswap: function() {
       var needed = this.get('skill_needed');
@@ -41,8 +47,21 @@ App.ApplicationController = Ember.Controller.extend({
 });
 
 App.SwapsController = Ember.ArrayController.extend({
+  filterText: '',
   sortAscending: false,
-  sortProperties: ['created_at']
+  sortProperties: ['created_at'],
+  filtered: function() {
+    var text = this.get('filterText').toLowerCase();
+    if(text.length < 2) {
+      return this.get('content')
+    } else {
+      return this.get('content').filter(function(item) {
+        var o = item.get('skill_offered').toLowerCase();
+        var n = item.get('skill_needed').toLowerCase();
+        return o.indexOf(text) > -1 || n.indexOf(text) > -1;
+      });
+    }
+  }.property("@each", 'filterText')
 });
 
 App.Swap = DS.Model.extend({

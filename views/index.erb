@@ -19,7 +19,7 @@
 
 <script type="text/x-handlebars" data-template-name="_filter">
   <div class="info-mini">
-    <form id="filter-form">
+    <div id="filter-form">
       {{ input type="text" value=filterText placeholder="Ember.js" }}
       <p>Filter the swaps</p>
     </form>
@@ -27,7 +27,7 @@
 </script>
 
 <script type="text/x-handlebars" id="swaps">
-  {{#each controller}}
+  {{#each controller.filtered}}
     <div class="swap">
       <p class="blurb"><a href="http://twitter.com/{{user}}" class="twitter">{{user}}</a> is looking for help with <strong>{{skill_needed}}</strong>.</p>
       <p class="blurb">In return, they can offer their help with <strong>{{skill_offered}}</strong>.</p>
