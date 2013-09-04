@@ -44,11 +44,36 @@ end
 
 # API
 
-get '/api/swap' do
-  tidy_results_for_api(Swap.all).to_json
+get '/api/swaps' do
+  { :swaps => tidy_results_for_api(Swap.all)}.to_json
 end
 
-get '/api/swap/:id' do
-  (tidy_result_for_api(Swap.find(params[:id])) || []).to_json
+get '/api/swaps/:id' do
+  {
+    :swap => tidy_result_for_api(Swap.find(params[:id]))
+  }.to_json
+end
+
+get '/api/user' do
+  { :user => session[:user] }.to_json
+end
+
+post '/api/swaps' do
+  content_type :json
+  puts "rack intput"
+  data = request.env["rack.input"].read
+  json_data = JSON.parse(data)
+  record = json_data["swap"]
+  if user_signed_in?
+    swap = Swap.new({
+      :skill_needed => record["skill_needed"],
+      :skill_offered => record["skill_offered"],
+      :user => session[:user]
+    })
+    if swap.valid?
+      swap.save!
+    else
+    end
+  end
 end
 
