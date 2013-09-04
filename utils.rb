@@ -22,3 +22,19 @@ end
 def redirect_if_not_signed_in
   redirect '/' unless user_signed_in?
 end
+
+def tidy_results_for_api(results)
+  results.map do |result|
+    tidy_result_for_api(result)
+  end
+end
+
+def tidy_result_for_api(result)
+  {
+    :id => result._id,
+    :skill_needed => result.skill_needed,
+    :skill_offered => result.skill_offered,
+    :created_at => result.created_at,
+    :user => result.user
+  }
+end

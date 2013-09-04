@@ -41,3 +41,14 @@ post '/create' do
     redirect '/'
   end
 end
+
+# API
+
+get '/api/swap' do
+  tidy_results_for_api(Swap.all).to_json
+end
+
+get '/api/swap/:id' do
+  (tidy_result_for_api(Swap.find(params[:id])) || []).to_json
+end
+
