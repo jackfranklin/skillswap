@@ -31,7 +31,7 @@
     <div class="swap">
       <p class="blurb"><a href="http://twitter.com/{{user}}" class="twitter">{{user}}</a> is looking for help with <strong>{{skill_needed}}</strong>.</p>
       <p class="blurb">In return, they can offer their help with <strong>{{skill_offered}}</strong>.</p>
-      <a class="btn btn-dark" href="https://twitter.com/intent/tweet?text={{user}}, I can help you with {{skill_needed}} (via SkillSwap).">Offer your help.</a>
+      {{twitter-intent user skill_needed "btn btn-dark" "Offer your help"}}
     </div>
   {{/each}}
 </script>
