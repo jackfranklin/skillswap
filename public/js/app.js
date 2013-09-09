@@ -81,3 +81,8 @@ Ember.Handlebars.helper('twitter-intent', function(user, skill, classes, linkTex
   var str = '<a class="' + classes + '" href="https://twitter.com/intent/tweet?text=@' + user + ', I can help you with ' + skill + '! (via SkillSwap)">' + linkText + '</a>';
   return new Handlebars.SafeString(str);
 });
+
+Ember.Handlebars.helper('twitter-profile', function(user) {
+  console.log(user);
+  return new Handlebars.SafeString("<a href='https://twitter.com/" + user + "'>" + user + "</a>");
+});
