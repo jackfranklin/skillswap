@@ -17,16 +17,10 @@ App.ApplicationAdapter = DS.RESTAdapter.extend({
 });
 
 App.ApplicationController = Ember.Controller.extend({
-  needs: ["swaps"],
   currentUser: $("#application").data("user"),
   userLoggedIn: function() {
     return !!this.get('currentUser');
   }.property('currentUser'),
-  filterTextDidChange: Ember.observer(function() {
-    var text = this.get('filterText');
-    var swaps = this.get('controllers.swaps');
-    swaps.set('filterText', text);
-  }, 'filterText'),
   actions: {
     newswap: function() {
       var needed = this.get('skill_needed');
@@ -48,20 +42,31 @@ App.ApplicationController = Ember.Controller.extend({
 
 App.SwapsController = Ember.ArrayController.extend({
   filterText: '',
+  searchNeededOnly: false,
+  searchOfferedOnly: false,
   sortAscending: false,
   sortProperties: ['created_at'],
   filtered: function() {
+    if(!this.get('filterText')) return this.get('content');
     var text = this.get('filterText').toLowerCase();
+    var searchNeededOnly = this.get('searchNeededOnly');
+    var searchOfferedOnly = this.get('searchOfferedOnly');
     if(text.length < 2) {
       return this.get('content');
     } else {
       return this.get('content').filter(function(item) {
         var o = item.get('skill_offered').toLowerCase();
         var n = item.get('skill_needed').toLowerCase();
-        return o.indexOf(text) > -1 || n.indexOf(text) > -1;
+        if((searchNeededOnly && searchOfferedOnly) || (!searchNeededOnly && !searchOfferedOnly)) {
+          return o.indexOf(text) > -1 || n.indexOf(text) > -1;
+        } else if(searchNeededOnly) {
+          return n.indexOf(text) > -1;
+        } else if(searchOfferedOnly) {
+          return o.indexOf(text) > -1;
+        }
       });
     }
-  }.property("@each", 'filterText')
+  }.property("@each", 'filterText', 'searchNeededOnly', 'searchOfferedOnly')
 });
 
 App.Swap = DS.Model.extend({

@@ -10,10 +10,7 @@
     </div>
   </div>
   <div>
-    <div class="wrap">
-      {{partial "filter"}}
-      {{outlet}}
-    </div>
+    {{ outlet }}
   </div>
 </script>
 
@@ -21,12 +18,20 @@
   <div class="info-mini">
     <div id="filter-form">
       {{ input type="text" value=filterText placeholder="Ember.js" }}
-      <p>Filter the swaps</p>
+      <p>Search for what people need: {{ input type="checkbox" checked=searchNeededOnly }}<br />
+      Search for what people can help with: {{ input type="checkbox" checked=searchOfferedOnly }}</p>
     </div>
   </div>
 </script>
 
 <script type="text/x-handlebars" id="swaps">
+  <div class="wrap">
+    {{partial "filter"}}
+    {{partial "listswaps"}}
+  </div>
+</script>
+
+<script type="text/x-handlebars" data-template-name='_listswaps'>
   {{#each controller.filtered}}
     <div class="swap">
       <p class="blurb"><a href="http://twitter.com/{{user}}" class="twitter">{{user}}</a> is looking for help with <strong>{{skill_needed}}</strong>.</p>
