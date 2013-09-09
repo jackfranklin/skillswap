@@ -53,8 +53,7 @@ App.SwapsController = Ember.ArrayController.extend({
     text = text.toLowerCase();
     var searchNeededOnly = this.get('searchNeededOnly');
     var searchOfferedOnly = this.get('searchOfferedOnly');
-    var filteredContent;
-    return this.get('content').filter(function(item) {
+    var filteredContent = this.get('content').filter(function(item) {
       var o = item.get('skill_offered').toLowerCase();
       var n = item.get('skill_needed').toLowerCase();
       if((searchNeededOnly && searchOfferedOnly) || (!searchNeededOnly && !searchOfferedOnly)) {
@@ -65,6 +64,8 @@ App.SwapsController = Ember.ArrayController.extend({
         return o.indexOf(text) > -1;
       }
     });
+
+    return filteredContent.reverse();
 
   }.property("@each", 'filterText', 'searchNeededOnly', 'searchOfferedOnly')
 });
