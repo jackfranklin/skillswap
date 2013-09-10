@@ -78,6 +78,7 @@ App.Swap = DS.Model.extend({
 });
 
 Ember.Handlebars.helper('twitter-intent', function(user, skill, classes, linkText) {
+  skill = skill.replace(/"/g, "&quot;");
   var str = '<a class="' + classes + '" href="https://twitter.com/intent/tweet?text=@' + user + ', I can help you with ' + skill + '! (via SkillSwap)">' + linkText + '</a>';
   return new Handlebars.SafeString(str);
 });
